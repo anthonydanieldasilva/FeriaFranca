@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import { Provider } from 'react-redux';
+import BottomTabNavigation from './src/navigation/BottomTabNavigation';
+import store from './src/store';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const [loaded] = useFonts({
+    'Expletus' : require ('./src/assets/fonts/ExpletusSans-Bold.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
+
+  return(
+    <Provider store={store} >
+      <BottomTabNavigation />
+    </Provider>
+  );
+    
+}
