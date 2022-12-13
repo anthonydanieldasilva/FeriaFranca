@@ -2,23 +2,26 @@ import React, { useEffect } from 'react'
 import { FlatList } from 'react-native'
 import GrillaDeProductos from '../components/GrillaDeProductos'
 import { useSelector, useDispatch, connect } from 'react-redux'
-import { productoSeleccionado, productoFiltrado } from '../store/actions/productos.action'
+import { productoFiltrado, productoSeleccionado} from '../store/actions/productos.action'
 
 
 const PantallaDeProductos = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
-  const productoFiltrado = useSelector((state) => state.productos.productoSeleccionado)
+  const productosFiltrado = useSelector((state) => state.productos.productoSeleccionado)
   const productos = useSelector((state) => state.categorias.selected)
 
 
   useEffect(() => {
-    dispatch(productoSeleccionado(productos.id))
+    dispatch(productoFiltrado(productos.id))
+
+    console.log(productoFiltrado)
+
   }, []); 
 
   const handleProductoSeleccionado = (item) => {
-    dispatch (productoFiltrado (item.id) )
-    navigation.navigate("Productos", { nombre: item.nombre })
+    dispatch (productoSeleccionado (item.id) )
+    navigation.navigate("DetalleDeProducto", { nombre: item.nombre })
   }
 
   const renderGrillaDeProductos = ({ item }) => (
@@ -27,7 +30,7 @@ const PantallaDeProductos = ({ navigation, route }) => {
 
   return (
     <FlatList
-      data={productos}
+      data={productosFiltrado}
       keyExtractor={(item) => item.id}
       renderItem={renderGrillaDeProductos}
     />

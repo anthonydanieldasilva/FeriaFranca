@@ -3,7 +3,7 @@ import { PRODUCTO_FILTRADO, PRODUCTO_SELECCIONADO } from "../actions/productos.a
 
 const inicialState = {
     productos: PRODUCTOS,
-    productoFltrado: [],
+    productoFiltrado: [],
     selected: null,
 }
 
@@ -20,7 +20,7 @@ const productosReducer = (state = inicialState, action) => {
         case PRODUCTO_FILTRADO:
             return {
                 ...state,
-                productoFltrado: state.productos.filter(
+                productoFiltrado: state.productos.filter(
                 (producto) => producto.categoria === action.categoriaID)
             };
         default:    

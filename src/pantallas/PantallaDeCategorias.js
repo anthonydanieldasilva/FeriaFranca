@@ -10,14 +10,13 @@ const PantallaDeCategorias = ({ navigation }) => {
   const categorias = useSelector((state)=> state.categorias.categorias );
   const dispatch = useDispatch();
 
-  const handleCategoriaSeleccionada =(item)=>{
+  const handleCategoriaSeleccionada = (item) => {
     dispatch(categoriaSeleccionada (item.id));
-
     navigation.navigate("Productos",{nombre: item.titulo}) 
   }
 
   const renderGrillaDeCategorias = ({item}) => (
-    <GrillaDeCategorias item={item} onSelected={handleCategoriaSeleccionada}/>
+    <GrillaDeCategorias item={item} onSelected = {handleCategoriaSeleccionada}/>
   )
     
   return (
