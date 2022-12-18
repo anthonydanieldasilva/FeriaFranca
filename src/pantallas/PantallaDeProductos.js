@@ -8,15 +8,13 @@ import { productoFiltrado, productoSeleccionado} from '../store/actions/producto
 const PantallaDeProductos = ({ navigation, route }) => {
 
   const dispatch = useDispatch();
-  const productosFiltrado = useSelector((state) => state.productos.productoSeleccionado)
+  const productosFiltrado = useSelector((state) => state.productos.productoFiltrado)
   const productos = useSelector((state) => state.categorias.selected)
 
 
   useEffect(() => {
     dispatch(productoFiltrado(productos.id))
-
-    console.log(productoFiltrado)
-
+    console.log(productosFiltrado)
   }, []); 
 
   const handleProductoSeleccionado = (item) => {
