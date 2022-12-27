@@ -1,6 +1,7 @@
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORES } from "../constants/Colors";
+import PantallaDeOrdenes from "../pantallas/PantallaDeOrdenes";
 
 
 const Stack = createNativeStackNavigator();
@@ -17,8 +18,11 @@ export default MainNavigator = () => {
                 headerTitleAlign: 'center',
             }} >
 
-            <Stack.Screen name="Orders" component={PantallaDeOrdenes}
-            options={{ title: "Ordenes" }} />
+            <Stack.Screen 
+            name="Orders" 
+            component={PantallaDeOrdenes}
+            options={{ title: "Ordenes" }} 
+            />
 
         </Stack.Navigator>
 

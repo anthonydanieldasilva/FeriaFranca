@@ -1,8 +1,9 @@
 
-import React from 'react'
+
 import React, { useEffect } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 import { useSelector, connect, useDispatch } from "react-redux";
+import GrillaDeOrdenes from "../components/GrillaDeOrdenes";
 import { getOrders } from "../store/actions/order.action";
 
 const PantallaDeOrdenes = () => {
@@ -13,12 +14,12 @@ const PantallaDeOrdenes = () => {
       dispatch(getOrders());
     }, []);
   
-    const handleDeleteItem = () => {
+    const handleEliminarOrden = () => {
       console.log("eliminar");
     };
   
     const renderItem = ({ item }) => (
-      <OrderItem item={item} onDelete={handleDeleteItem} />
+      <GrillaDeOrdenes item={item} onDelete={handleEliminarOrden} />
     );
     return (
         <View style={styles.container}>
