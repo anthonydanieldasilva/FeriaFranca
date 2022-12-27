@@ -1,3 +1,5 @@
+
+
 import { URL_API } from "../../constants/Database";
 export const AGREGAR_ITEM = "AGREGAR_ITEM";
 export const REMOVER_ITEM = "REMOVER_ITEM";
@@ -13,13 +15,12 @@ export const removerItem = (itemID) => ({
     itemID,
 });
 
-
-/*export const confirmarCarro = (payload, user) => {
+export const confirmarCarro = (payload, user) => {
 
     return async (dispatch) => {
 
         try {
-            const response = await fetch(`${URL_API}/ordenes.json`, {
+            const response = await fetch( ` ${ URL_API} /ordenes.json `, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,4 +41,4 @@ export const removerItem = (itemID) => ({
 
     };
 
-};*/
+};

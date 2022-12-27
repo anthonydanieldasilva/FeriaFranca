@@ -4,6 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { NavigationContainer } from '@react-navigation/native';
 import CartNavigator from './CartNavigator';
 import MainNavigator from './MainNavigator';
+import OrderNavigator from "./OrderNavigator";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -42,6 +43,19 @@ export default BottomTabsNavigator = () => {
                             <View style={styles.item}>
                                 <Ionicons name="cart" size={30} color="black" />
                                 <Text>Carro</Text>
+                            </View>
+                        ),
+                    }}
+                />
+
+                <BottomTabs.Screen
+                    name="OrdersTab"
+                    component={OrderNavigator}
+                    options={{
+                        tabBarIcon: ({ focus }) => (
+                            <View style={styles.item}>
+                                <Ionicons name="list" size={30} color="black" />
+                                <Text>Ordenes</Text>
                             </View>
                         ),
                     }}

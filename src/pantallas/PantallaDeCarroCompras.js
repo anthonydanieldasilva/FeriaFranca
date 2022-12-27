@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import GrillaCarroDeCompras from '../components/GrillaCarroDeCompras'
 import { useSelector, useDispatch } from 'react-redux'
-import { removerItem } from '../store/actions/carroCompras.action'
+import { removerItem, confirmarCarro} from '../store/actions/carroCompras.action'
 
 
 const PantallaDeCarroCompras = () => {
@@ -9,15 +9,15 @@ const PantallaDeCarroCompras = () => {
   const items = useSelector((state) => state.carroCompras.items)
   const total = useSelector((state) => state.carroCompras.total)
 
-  const handleConfirmar = () => {
-    console.log("confirmar carro")
-  }
+  const handleConfirmar = () => { dispatch ( confirmarCarro ( items,total )) }
+
+  console.log(total)
 
   const handleEliminaArticulo = (id) => {dispatch(removerItem(id)) }
 
-  const renderCarroCompras = ({ item }) => {
+  const renderCarroCompras = ({ item }) => (
     <GrillaCarroDeCompras item={item} onDelete={handleEliminaArticulo} />
-  }
+  )
 
   return (
     <View style={styles.container}>
@@ -40,6 +40,7 @@ const PantallaDeCarroCompras = () => {
         </TouchableOpacity>
       </View>
     </View>
+    
   )
 }
 
@@ -48,7 +49,7 @@ export default PantallaDeCarroCompras
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 12,
+      padding: 10,
       backgroundColor: "#fff",
       paddingBottom: 140,
     },
@@ -56,9 +57,9 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     footer: {
-      padding: 30,
+      padding: 25,
       borderTopColor: "#ccc",
-      borderTopWidth: 1,
+      borderTopWidth: 2,
     },
     confirm: {
       backgroundColor: "#ccc",

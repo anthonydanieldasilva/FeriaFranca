@@ -7,7 +7,7 @@ const inicialState = {
 }
 
 const sumaTotaldeCarro = (list) => {
-    list.map((item) => item.cantidad * item.precio).reduce((a, b) => a + b, 0)
+    list.map((item) => item.cantidad * item.precio).reduce((a, b) => a + b, 0);
 }
 
 const carroComprasReducer = (state = inicialState, action) => {
@@ -18,6 +18,7 @@ const carroComprasReducer = (state = inicialState, action) => {
                 (item) => item.id !== action.itemID
             );
             return { ...state, items: cleanCart, total: sumaTotaldeCarro(cleanCart) };
+
         case AGREGAR_ITEM:
             const indexItem = state.items.findIndex(
                 (item) => item.id === action.item.id
@@ -34,6 +35,7 @@ const carroComprasReducer = (state = inicialState, action) => {
                 return item;
             });
             return { ...state, items, total: sumaTotaldeCarro(items) };
+            
         case CONFIRMAR_CARRO:
             return { ...state, items: [], total: 0 };
         default:

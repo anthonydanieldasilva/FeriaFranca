@@ -12,10 +12,10 @@ const  GrillaCarroDeCompras = ({ item, onDelete }) => {
       <View style={styles.detail}>
         <View>
           <Text>Cantidad: {item.cantidad}</Text>
-          <Text>{item.precio}</Text>
+          <Text>Precio: ${item.precio}</Text>
         </View>
         <TouchableOpacity onPress={() => onDelete(item.id)}>
-          <Ionicons name="trash" size={24} color="red" />
+          <Ionicons name="trash" size={28} color="red" />
         </TouchableOpacity>
       </View>
     </View>
